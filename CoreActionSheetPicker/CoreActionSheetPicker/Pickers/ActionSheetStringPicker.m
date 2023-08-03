@@ -69,7 +69,7 @@
 - (UIView *)configuredPickerView {
     if (!self.data)
         return nil;
-    CGRect pickerFrame = CGRectMake(0, 40, self.viewSize.width, 216);
+    CGRect pickerFrame = CGRectMake(0, 40, self.viewSize.width, 280);
     UIPickerView *stringPicker = [[UIPickerView alloc] initWithFrame:pickerFrame];
     stringPicker.delegate = self;
     stringPicker.dataSource = self;
@@ -180,7 +180,7 @@
     if (pickerLabel == nil) {
         pickerLabel = [[UILabel alloc] init];
     }
-    
+    [pickerLabel setNumberOfLines:0];
     NSAttributedString *attributedTitle = [self pickerView:pickerView attributedTitleForRow:row forComponent:component];
     if (attributedTitle == nil) {
         attributedTitle = [[NSAttributedString alloc] initWithString:@"" attributes:self.pickerTextAttributes];
@@ -191,6 +191,10 @@
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     return pickerView.frame.size.width - 30;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+    return 65.0;
 }
 
 @end
